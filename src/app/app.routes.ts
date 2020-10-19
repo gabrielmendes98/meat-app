@@ -1,27 +1,26 @@
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 
-import { HomeComponent } from "./pages/home/home.component";
-import { RestaurantsComponent } from "./pages/restaurants/restaurants.component";
-import { RestaurantDetailComponent } from "./pages/restaurant-detail/restaurant-detail.component";
-import { AboutComponent } from "./pages/about/about.component";
-import { MenuComponent } from "./pages/restaurant-detail/menu/menu.component";
-import { ReviewsComponent } from "./pages/restaurant-detail/reviews/reviews.component";
-import { OrderComponent } from "./pages/order/order.component";
-import { OrderSummaryComponent } from "./pages/order-summary/order-summary.component";
+import { HomeComponent } from './pages/home/home.component';
+import { RestaurantsComponent } from './pages/restaurants/restaurants.component';
+import { RestaurantDetailComponent } from './pages/restaurant-detail/restaurant-detail.component';
+import { MenuComponent } from './pages/restaurant-detail/menu/menu.component';
+import { ReviewsComponent } from './pages/restaurant-detail/reviews/reviews.component';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
 
 export const ROUTES: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "restaurants", component: RestaurantsComponent },
+  { path: '', component: HomeComponent },
+  { path: 'restaurants', component: RestaurantsComponent },
   {
-    path: "restaurants/:id",
+    path: 'restaurants/:id',
     component: RestaurantDetailComponent,
     children: [
-      { path: "", redirectTo: "menu", pathMatch: "full" },
-      { path: "menu", component: MenuComponent },
-      { path: "reviews", component: ReviewsComponent },
+      { path: '', redirectTo: 'menu', pathMatch: 'full' },
+      { path: 'menu', component: MenuComponent },
+      { path: 'reviews', component: ReviewsComponent },
     ],
   },
-  { path: "order", component: OrderComponent },
-  { path: "order-summary", component: OrderSummaryComponent },
-  { path: "about", component: AboutComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'order-summary', component: OrderSummaryComponent },
+  { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
 ];

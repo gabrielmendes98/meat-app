@@ -370,5 +370,32 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "yhyjhyt",
+      "number": "12345",
+      "optionalAddress": "",
+      "paymentOption": "MON",
+      "orderItems": [
+        {
+          "quantity": 2,
+          "menuId": "zlasagna"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "address": "gfhtry",
+      "number": "1234",
+      "optionalAddress": "",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "capp"
+        }
+      ],
+      "id": 2
+    }
+  ]
 }

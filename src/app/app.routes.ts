@@ -6,6 +6,7 @@ import { RestaurantDetailComponent } from './pages/restaurant-detail/restaurant-
 import { MenuComponent } from './pages/restaurant-detail/menu/menu.component';
 import { ReviewsComponent } from './pages/restaurant-detail/reviews/reviews.component';
 import { OrderSummaryComponent } from './pages/order-summary/order-summary.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const ROUTES: Routes = [
   { path: '', component: HomeComponent },
@@ -22,4 +23,5 @@ export const ROUTES: Routes = [
   { path: 'order-summary', component: OrderSummaryComponent },
   { path: 'order', loadChildren: './pages/order/order.module#OrderModule' },
   { path: 'about', loadChildren: './pages/about/about.module#AboutModule' },
+  { path: '**', component: NotFoundComponent },
 ];

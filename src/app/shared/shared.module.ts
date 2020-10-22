@@ -14,9 +14,10 @@ import { SnackbarComponent } from './messages/snackbar/snackbar.component';
 import { NotificationService } from './messages/notification.service';
 import { LoginService } from 'app/security/login/login.service';
 import { LoggedInGuard } from 'app/security/loggedin.guard';
+import { UserDetailComponent } from './header/user-detail/user-detail.component';
 
 @NgModule({
-  declarations: [InputComponent, HeaderComponent, RadioComponent, RatingComponent, SnackbarComponent],
+  declarations: [InputComponent, HeaderComponent, RadioComponent, RatingComponent, SnackbarComponent, UserDetailComponent],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
     InputComponent,

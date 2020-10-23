@@ -9,7 +9,6 @@ import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order } from './order.model';
 
 import { MEAT_API } from '../../app.api';
-import { LoginService } from 'app/security/login/login.service';
 
 @Injectable()
 export class OrderService {

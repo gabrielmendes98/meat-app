@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { InputComponent } from './input/input.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +17,7 @@ import { LoginService } from 'app/security/login/login.service';
 import { LoggedInGuard } from 'app/security/loggedin.guard';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
 import { LeaveOrderGuard } from 'app/pages/order/leave-order.guard';
+import { AuthInterceptor } from 'app/security/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ export class SharedModule {
         LoginService,
         LoggedInGuard,
         LeaveOrderGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
       ],
     };
   }

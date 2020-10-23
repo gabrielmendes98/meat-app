@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import 'rxjs/add/operator/do';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { tap } from 'rxjs/operators';
 
 import { RadioOption } from '../../shared/radio/radio-option.model';
 import { OrderService } from './order.service';
@@ -30,9 +30,9 @@ export class OrderComponent implements OnInit {
   constructor(private orderService: OrderService, private router: Router, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group(
+    this.orderForm = new FormGroup(
       {
-        name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+        name: new FormControl('', { validators: [Validators.required, Validators.minLength(5)] }),
         email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
         emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
         address: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
@@ -40,7 +40,7 @@ export class OrderComponent implements OnInit {
         optionalAddress: this.formBuilder.control(''),
         paymentOption: this.formBuilder.control('', [Validators.required]),
       },
-      { validator: OrderComponent.equalsTo }
+      { validators: [OrderComponent.equalsTo], updateOn: 'blur' }
     );
   }
 
@@ -83,7 +83,7 @@ export class OrderComponent implements OnInit {
     order.orderItems = this.cartItems().map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id));
     this.orderService
       .checkOrder(order)
-      .do((orderId) => (this.orderId = orderId))
+      .pipe(tap((orderId) => (this.orderId = orderId)))
       .subscribe(() => {
         this.router.navigate(['/order-summary']);
         this.orderService.clear();

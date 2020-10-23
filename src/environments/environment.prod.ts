@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://meatapp.backend.com.br',
+  api: 'https://localhost:3001',
 };

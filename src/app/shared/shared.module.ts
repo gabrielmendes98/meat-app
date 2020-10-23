@@ -15,9 +15,17 @@ import { NotificationService } from './messages/notification.service';
 import { LoginService } from 'app/security/login/login.service';
 import { LoggedInGuard } from 'app/security/loggedin.guard';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
+import { LeaveOrderGuard } from 'app/pages/order/leave-order.guard';
 
 @NgModule({
-  declarations: [InputComponent, HeaderComponent, RadioComponent, RatingComponent, SnackbarComponent, UserDetailComponent],
+  declarations: [
+    InputComponent,
+    HeaderComponent,
+    RadioComponent,
+    RatingComponent,
+    SnackbarComponent,
+    UserDetailComponent,
+  ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   exports: [
     InputComponent,
@@ -41,6 +49,7 @@ export class SharedModule {
         NotificationService,
         LoginService,
         LoggedInGuard,
+        LeaveOrderGuard,
       ],
     };
   }
